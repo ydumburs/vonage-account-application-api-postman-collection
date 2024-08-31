@@ -49,7 +49,7 @@ How to Use
 4. **Configure API Key and Secret**  
    Add your Vonage API Key and Secret to the Collection variables and save your changes. Refer to: https://community.postman.com/t/how-do-i-set-a-collection-variable/5466 for instructions.
 5. **Add JWT for User Management**  
-   For user management, you need a JWT. Save your JWT in the `jwt` Collection variable or replace `{{jwt}}` in the Auth tab with your token.
+   For user management, you need a JWT. For a JWT generation, please see https://github.com/ydumburs/vonage-application-api-postman-collection/blob/main/README.md#authentication-for-managing-users. Save your JWT in the `jwt` Collection variable or replace `{{jwt}}` in the Auth tab with your token.
 6. **Send Requests**  
    Modify the request body as needed and click the `Send` button.
 
