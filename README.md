@@ -46,8 +46,8 @@ How to Use
    Download the Postman desktop app: https://www.postman.com/downloads/. You can also use the Web version: https://blog.postman.com/announcing-postman-for-the-web-now-in-open-beta/.
 3. **Import the Collection**  
    Import the `Vonage Application API.postman_collection.json` into Postman. For guidance, check out: https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data.
-4. **Configure API Key and Secret**  
-   Add your Vonage API Key and Secret to the Collection variables and save your changes. Refer to: https://community.postman.com/t/how-do-i-set-a-collection-variable/5466 for instructions.
+4. **Configure credentials**  
+   Add your Vonage API key and secret to the Collection variables and save your changes. Refer to: https://community.postman.com/t/how-do-i-set-a-collection-variable/5466 for instructions.
 5. **Add JWT for User Management**  
    For user management, you need a JWT. For a JWT generation, please see https://github.com/ydumburs/vonage-application-api-postman-collection/blob/main/README.md#authentication-for-managing-users. Save your JWT in the `jwt` Collection variable or replace `{{jwt}}` in the Auth tab with your token.
 6. **Send Requests**  
