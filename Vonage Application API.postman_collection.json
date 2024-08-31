@@ -1,0 +1,1168 @@
+{
+	"info": {
+		"_postman_id": "3b1f6a26-2026-4959-ab32-997cd2272190",
+		"name": "Vonage Application API",
+		"description": "Vonage Application API Version 2 collection\n\nReference: [https://developer.vonage.com/en/api/application.v2](https://developer.vonage.com/en/api/application.v2)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12740096"
+	},
+	"item": [
+		{
+			"name": "Generate a JWT",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json(); ",
+							"if (response.token) {",
+							"    pm.collectionVariables.set(\"jwt\", response.token); ",
+							"    console.log(\"JWT has been set to collection variable:\", response.token);",
+							"} else {",
+							"    console.error(\"JWT token not found in the response\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/generate-jwt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"generate-jwt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List available applications",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api_key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nexmo.com/v2/applications",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nexmo",
+						"com"
+					],
+					"path": [
+						"v2",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Voice application",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api_key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Voice Application\",\n    \"capabilities\": {\n       \"voice\": {\n          \"webhooks\": {\n             \"answer_url\": {\n                \"address\": \"https://example.com/webhooks/answer\",\n                \"http_method\": \"GET\"\n             },\n             \"event_url\": {\n                \"address\": \"https://example.com/webhooks/event\",\n                \"http_method\": \"POST\"\n             }\n          },\n          \"region\": \"eu-west\"\n       }\n    },\n    \"privacy\": {\n       \"improve_ai\": false\n    }\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.nexmo.com/v2/applications",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nexmo",
+						"com"
+					],
+					"path": [
+						"v2",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Video application",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api_key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Video Application\",\n    \"capabilities\": {\n        \"video\": {\n            \"webhooks\": {\n                \"archive_status\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"connection_created\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"connection_destroyed\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"sip_call_created\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"sip_call_updated\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"sip_call_destroyed\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"sip_call_mute_forced\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"stream_created\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"stream_destroyed\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"render_status\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"broadcast_status\": {\n                    \"address\": \"{{webhook}}\"\n                },\n                \"captions_status\": {\n                    \"address\": \"{{webhook}}\"\n                }\n            },\n            \"storage\": {\n                \"server_side_encryption\": false,\n                \"end_to_end_encryption\": false,\n                \"cloud_storage\": false\n            },\n            \"hoolock_configs\": [\n                {\n                    \"client_policies\": {\n                        \"all\": [\n                            {\n                                \"value\": \"enable\"\n                            }\n                        ]\n                    },\n                    \"key\": \"simulcast.enabled\"\n                }\n            ]\n        }\n    },\n    \"privacy\": {\n       \"improve_ai\": false\n    }\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.nexmo.com/v2/applications",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nexmo",
+						"com"
+					],
+					"path": [
+						"v2",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an application",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api_key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nexmo.com/v2/applications/{{application_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nexmo",
+						"com"
+					],
+					"path": [
+						"v2",
+						"applications",
+						"{{application_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an application",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api_key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"Demo Application\",\n   \"capabilities\": {\n      \"voice\": {\n         \"webhooks\": {\n            \"answer_url\": {\n               \"address\": \"https://example.com/webhooks/answer\",\n               \"http_method\": \"GET\",\n               \"connection_timeout\": 500,\n               \"socket_timeout\": 3000\n            },\n            \"fallback_answer_url\": {\n               \"address\": \"https://fallback.example.com/webhooks/answer\",\n               \"http_method\": \"GET\",\n               \"connection_timeout\": 500,\n               \"socket_timeout\": 3000\n            },\n            \"event_url\": {\n               \"address\": \"https://example.com/webhooks/event\",\n               \"http_method\": \"POST\",\n               \"connection_timeout\": 500,\n               \"socket_timeout\": 3000\n            }\n         },\n         \"signed_callbacks\": false,\n         \"conversations_ttl\": 12,\n         \"region\": \"eu-west\"\n      }\n   }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.nexmo.com/v2/applications/{{application_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nexmo",
+						"com"
+					],
+					"path": [
+						"v2",
+						"applications",
+						"{{application_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an application",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{api_key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.nexmo.com/v2/applications/{{application_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nexmo",
+						"com"
+					],
+					"path": [
+						"v2",
+						"applications",
+						"{{application_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List users (US)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-us.vonage.com/v1/users",
+					"protocol": "https",
+					"host": [
+						"api-us",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List users (EU)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-eu.vonage.com/v1/users",
+					"protocol": "https",
+					"host": [
+						"api-eu",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List users (AP)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-ap.vonage.com/v1/users",
+					"protocol": "https",
+					"host": [
+						"api-ap",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a user (US)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"Eve\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-us.vonage.com/v1/users",
+					"protocol": "https",
+					"host": [
+						"api-us",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a user (EU)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"Eve\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-eu.vonage.com/v1/users",
+					"protocol": "https",
+					"host": [
+						"api-eu",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a user (AP)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"Eve\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-ap.vonage.com/v1/users",
+					"protocol": "https",
+					"host": [
+						"api-ap",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user (US)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-us.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-us",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user (EU)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-eu.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-eu",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user (AP)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-ap.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-ap",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a user (US)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"my_user_name\",\n   \"display_name\": \"My User Name\",\n   \"image_url\": \"https://example.com/image.png\",\n   \"channels\": {\n      \"pstn\": [\n         {\n            \"number\": 123457\n         }\n      ],\n      \"sip\": [\n         {\n            \"uri\": \"sip:4442138907@sip.example.com;transport=tls\",\n            \"username\": \"New SIP\",\n            \"password\": \"Password\"\n         }\n      ],\n      \"vbc\": [\n         {\n            \"extension\": \"403\"\n         }\n      ],\n      \"websocket\": [\n         {\n            \"uri\": \"wss://example.com/socket\",\n            \"content-type\": \"audio/l16;rate=16000\",\n            \"headers\": {\n               \"customer_id\": \"ABC123\"\n            }\n         }\n      ],\n      \"sms\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"mms\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"whatsapp\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"viber\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"messenger\": [\n         {\n            \"id\": \"12345abcd\"\n         }\n      ]\n   }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-us.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-us",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a user (EU)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"my_user_name\",\n   \"display_name\": \"My User Name\",\n   \"image_url\": \"https://example.com/image.png\",\n   \"channels\": {\n      \"pstn\": [\n         {\n            \"number\": 123457\n         }\n      ],\n      \"sip\": [\n         {\n            \"uri\": \"sip:4442138907@sip.example.com;transport=tls\",\n            \"username\": \"New SIP\",\n            \"password\": \"Password\"\n         }\n      ],\n      \"vbc\": [\n         {\n            \"extension\": \"403\"\n         }\n      ],\n      \"websocket\": [\n         {\n            \"uri\": \"wss://example.com/socket\",\n            \"content-type\": \"audio/l16;rate=16000\",\n            \"headers\": {\n               \"customer_id\": \"ABC123\"\n            }\n         }\n      ],\n      \"sms\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"mms\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"whatsapp\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"viber\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"messenger\": [\n         {\n            \"id\": \"12345abcd\"\n         }\n      ]\n   }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-eu.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-eu",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a user (AP)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\": \"my_user_name\",\n   \"display_name\": \"My User Name\",\n   \"image_url\": \"https://example.com/image.png\",\n   \"channels\": {\n      \"pstn\": [\n         {\n            \"number\": 123457\n         }\n      ],\n      \"sip\": [\n         {\n            \"uri\": \"sip:4442138907@sip.example.com;transport=tls\",\n            \"username\": \"New SIP\",\n            \"password\": \"Password\"\n         }\n      ],\n      \"vbc\": [\n         {\n            \"extension\": \"403\"\n         }\n      ],\n      \"websocket\": [\n         {\n            \"uri\": \"wss://example.com/socket\",\n            \"content-type\": \"audio/l16;rate=16000\",\n            \"headers\": {\n               \"customer_id\": \"ABC123\"\n            }\n         }\n      ],\n      \"sms\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"mms\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"whatsapp\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"viber\": [\n         {\n            \"number\": \"447700900000\"\n         }\n      ],\n      \"messenger\": [\n         {\n            \"id\": \"12345abcd\"\n         }\n      ]\n   }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-ap.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-ap",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a user (US)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api-us.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-us",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a user (EU)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api-eu.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-eu",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a user (AP)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api-ap.vonage.com/v1/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"api-ap",
+						"vonage",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "api_secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "jwt",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "webhook",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "application_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
