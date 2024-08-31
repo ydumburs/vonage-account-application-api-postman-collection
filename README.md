@@ -7,17 +7,14 @@ REST API reference: https://developer.vonage.com/en/api/application.v2#User
 How It Works
 ======================
 ## **Using Postman Variables**  
-In this collection, items enclosed in `{{ }}` are variables (e.g., `{{application_id}}`). You can either replace these placeholders with your own values or set them as variables in Postman. 
-- To set a Collection variable, follow the instructions in the Postman guide: https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables.  
-- Alternatively, you can replace the variable directly with your desired value. Use whichever method is most convenient for you.  
-   <img width="400" alt="Screenshot 2024-08-31 at 12 59 01 PM" src="https://github.com/user-attachments/assets/aefe55b9-d3fb-46d8-8eb6-2eef2966742d">
-
+In this collection, items enclosed in `{{ }}` are variables (e.g., `{{application_id}}`). You can either replace these placeholders with your own values or set them as variables in Postman. For more information about Postman Collection variable, visit: https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables. 
 
 ## **Authentication for Managing Vonage Applications**  
-To manage Vonage Applications (e.g., creating an application, retrieving application details, or updating applications), you need to use Basic authentication. This requires a Vonage API key and secret, which must be Base64 encoded. For more information, see the https://developer.vonage.com/en/getting-started/concepts/authentication#basic-authentication.
+To manage Vonage Applications (e.g., creating an application, retrieving application details, or updating applications), you need to use basic authentication. This requires a Vonage API key and secret, which must be Base64 encoded. For more information, see the https://developer.vonage.com/en/getting-started/concepts/authentication#basic-authentication.
 
-In this Collection, requests are pre-configured with Basic authentication using the Vonage API key and secret stored in the Collection variables. These credentials are automatically encoded in Base64 format.  
-<img width="400" alt="Screenshot 2024-08-31 at 8 52 54 AM" src="https://github.com/user-attachments/assets/93a06572-a27f-4f8b-b6ad-56687b470737">
+In this Collection, requests are pre-configured with basic authentication using the Vonage API key and secret stored in the Collection variables. These credentials are automatically encoded in Base64 format.  
+<img width="600" alt="Screenshot 2024-08-31 at 1 41 30 PM" src="https://github.com/user-attachments/assets/6f01dff4-74dc-4965-ba4b-a58ff54ad883">
+
 
 ## **Authentication for Managing Users**  
 To manage Vonage Users (e.g., creating or updating a user), you need to use Bearer Authentication with a JWT generated from your Application ID and Private Key. 
@@ -39,6 +36,7 @@ if (response.token) {
 
 ## **User Management Request URLs**  
 The request URL for user management varies by region. We have separate endpoints for the US, EU, and AP regions. For detailed information, please visit https://developer.vonage.com/en/voice/voice-api/concepts/regions.
+<img width="269" alt="Screenshot 2024-08-31 at 1 39 47 PM" src="https://github.com/user-attachments/assets/26cd8db2-a56d-416a-8da3-461f5d17fa44">
 
 How to Use
 ======================
