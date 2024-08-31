@@ -1,6 +1,7 @@
 Overview
 ======================
 This Postman collection is designed for the Vonage Application API, allowing you to manage Vonage Applications and Users. It provides a set of pre-configured authentications and requests to interact with Application API endpoints efficiently.  
+
 REST API reference: https://developer.vonage.com/en/api/application.v2#User
 
 How It Works
@@ -19,7 +20,8 @@ In this Collection, requests are pre-configured with Basic authentication using 
 <img width="400" alt="Screenshot 2024-08-31 at 8 52 54 AM" src="https://github.com/user-attachments/assets/93a06572-a27f-4f8b-b6ad-56687b470737">
 
 ## **Authentication for Managing Users**  
-To manage Vonage Users (e.g., creating or updating a user), you need to use Bearer Authentication with a JWT generated from your Application ID and Private Key.  
+To manage Vonage Users (e.g., creating or updating a user), you need to use Bearer Authentication with a JWT generated from your Application ID and Private Key. 
+
 JWT Generation Options:  
 1. You can create a JWT using the Vonage's onlie tool: https://developer.vonage.com/en/getting-started/concepts/authentication#using-the-vonage-api-online-tool-to-generate-a-jwt.
 2. You can also create a JWT using the Vonage server SDK: https://developer.vonage.com/en/getting-started/concepts/authentication#using-the-server-sdks. For convenience, configure the endpoint using the SDK and use the `Generate a JWT` request at the top of the Collection. This request includes a Postman post-request script that automatically stores the returned JWT in a Collection variable upon completion.
