@@ -248,7 +248,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.nexmo.com/v2/applications/7e614b87-db6e-400f-9622-c37b147f1ae4",
+					"raw": "https://api.nexmo.com/v2/applications/{{application_id}}",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -258,7 +258,7 @@
 					"path": [
 						"v2",
 						"applications",
-						"7e614b87-db6e-400f-9622-c37b147f1ae4"
+						"{{application_id}}"
 					]
 				}
 			},
@@ -306,7 +306,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://api.nexmo.com/v2/applications/8c0175a1-f1bd-48b5-a0ae-f928aae5823a",
+					"raw": "https://api.nexmo.com/v2/applications/{{application_id}}",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -316,7 +316,7 @@
 					"path": [
 						"v2",
 						"applications",
-						"8c0175a1-f1bd-48b5-a0ae-f928aae5823a"
+						"{{application_id}}"
 					]
 				}
 			},
@@ -331,7 +331,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -354,7 +355,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://api.nexmo.com/v2/applications/8c0175a1-f1bd-48b5-a0ae-f928aae5823a",
+					"raw": "https://api.nexmo.com/v2/applications/{{application_id}}",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -364,7 +365,7 @@
 					"path": [
 						"v2",
 						"applications",
-						"8c0175a1-f1bd-48b5-a0ae-f928aae5823a"
+						"{{application_id}}"
 					]
 				}
 			},
@@ -707,7 +708,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api-us.vonage.com/v1/users/USR-effc9535-df11-41ae-85db-b0e3e7ffae32",
+					"raw": "https://api-us.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-us",
@@ -717,7 +718,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-effc9535-df11-41ae-85db-b0e3e7ffae32"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -751,7 +752,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api-eu.vonage.com/v1/users/USR-6ef34d04-b50f-4936-8dce-59b6acb9fc35",
+					"raw": "https://api-eu.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-eu",
@@ -761,7 +762,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-6ef34d04-b50f-4936-8dce-59b6acb9fc35"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -795,7 +796,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api-ap.vonage.com/v1/users/USR-6ef34d04-b50f-4936-8dce-59b6acb9fc35",
+					"raw": "https://api-ap.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-ap",
@@ -805,7 +806,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-6ef34d04-b50f-4936-8dce-59b6acb9fc35"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -851,7 +852,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://api-us.vonage.com/v1/users/USR-effc9535-df11-41ae-85db-b0e3e7ffae32",
+					"raw": "https://api-us.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-us",
@@ -861,7 +862,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-effc9535-df11-41ae-85db-b0e3e7ffae32"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -907,7 +908,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://api-eu.vonage.com/v1/users/USR-effc9535-df11-41ae-85db-b0e3e7ffae32",
+					"raw": "https://api-eu.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-eu",
@@ -917,7 +918,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-effc9535-df11-41ae-85db-b0e3e7ffae32"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -963,7 +964,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://api-ap.vonage.com/v1/users/USR-effc9535-df11-41ae-85db-b0e3e7ffae32",
+					"raw": "https://api-ap.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-ap",
@@ -973,7 +974,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-effc9535-df11-41ae-85db-b0e3e7ffae32"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -1007,7 +1008,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://api-us.vonage.com/v1/users/USR-c960287b-515d-4499-9f25-f00793070e13",
+					"raw": "https://api-us.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-us",
@@ -1017,7 +1018,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-c960287b-515d-4499-9f25-f00793070e13"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -1051,7 +1052,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://api-eu.vonage.com/v1/users/USR-c960287b-515d-4499-9f25-f00793070e13",
+					"raw": "https://api-eu.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-eu",
@@ -1061,7 +1062,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-c960287b-515d-4499-9f25-f00793070e13"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -1095,7 +1096,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://api-ap.vonage.com/v1/users/USR-c960287b-515d-4499-9f25-f00793070e13",
+					"raw": "https://api-ap.vonage.com/v1/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"api-ap",
@@ -1105,7 +1106,7 @@
 					"path": [
 						"v1",
 						"users",
-						"USR-c960287b-515d-4499-9f25-f00793070e13"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -1134,11 +1135,6 @@
 	],
 	"variable": [
 		{
-			"key": "application_id",
-			"value": "",
-			"type": "string"
-		},
-		{
 			"key": "api_key",
 			"value": "",
 			"type": "string"
@@ -1155,6 +1151,16 @@
 		},
 		{
 			"key": "webhook",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "application_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
 			"value": "",
 			"type": "string"
 		}
