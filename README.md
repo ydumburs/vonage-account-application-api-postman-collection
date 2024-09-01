@@ -17,22 +17,7 @@ In this Collection, requests are pre-configured with basic authentication using 
 
 
 ## **Authentication for Managing Users**  
-To manage Vonage Users (e.g., creating or updating a user), you need to use Bearer Authentication with a JWT generated from your Application ID and Private Key. 
-
-JWT Generation Options:  
-1. You can create a JWT using the Vonage's onlie tool: https://developer.vonage.com/en/getting-started/concepts/authentication#using-the-vonage-api-online-tool-to-generate-a-jwt.
-2. You can also create a JWT using the Vonage server SDK: https://developer.vonage.com/en/getting-started/concepts/authentication#using-the-server-sdks. For convenience, configure the endpoint using the SDK and use the `Generate a JWT` request at the top of the Collection. This request includes a Postman post-request script that automatically stores the returned JWT in a Collection variable upon completion.
-```
-// Postman Post-request script
-const response = pm.response.json(); 
-if (response.token) {
-    pm.collectionVariables.set("jwt", response.token); 
-    console.log("JWT has been set to collection variable:", response.token);
-} else {
-    console.error("JWT token not found in the response");
-}
-```
-3. In addition to those options, there are several other ways to generate JWTs. For more information, please refer to the  https://developer.vonage.com/en/getting-started/concepts/authentication#generating-jwts
+To make a request in the `User` folder to manage Vonage Users (e.g., creating or updating a user), you need to use Bearer Authentication with a JWT generated from your Application ID and Private Key. You can generate a JWT using one of the following methods https://github.com/ydumburs/vonage-video-api-postman-collection/blob/main/README.md#authentication.
 
 ## **User Management Request URLs**  
 The request URL for user management varies by region. We have separate endpoints for the US, EU, and AP regions. For detailed information, please visit https://developer.vonage.com/en/voice/voice-api/concepts/regions.
