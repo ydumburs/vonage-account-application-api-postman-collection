@@ -20,7 +20,7 @@ In this Collection, requests are pre-configured with basic authentication using 
 To make a request in the `User` folder to manage Vonage Users (e.g., creating or updating a user), you need to use Bearer Authentication with a JWT generated from your Application ID and Private Key. You can generate a JWT using one of the following methods https://github.com/ydumburs/vonage-video-api-postman-collection/blob/main/README.md#authentication.
 
 ## **User Management Request URLs**  
-The request URL for user management varies by region. We have separate endpoints for the US, EU, and AP regions. For detailed information, please visit https://developer.vonage.com/en/voice/voice-api/concepts/regions.
+The request URL for user management varies by region. We have separate endpoints for the US, EU, and AP regions. For detailed information, please visit https://developer.vonage.com/en/voice/voice-api/concepts/regions.  
 <img width="269" alt="Screenshot 2024-08-31 at 1 39 47 PM" src="https://github.com/user-attachments/assets/26cd8db2-a56d-416a-8da3-461f5d17fa44">
 
 How to Use
