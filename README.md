@@ -1,16 +1,18 @@
 Overview
 ======================
-This Postman collection is designed for the Vonage Application API, allowing you to manage Vonage Applications and Users. It provides a set of pre-configured authentications and requests to interact with Application API endpoints efficiently.  
+This Postman collection is designed for the Vonage Account API and Application API, allowing you to manage Vonage Account, Applications, and Users. It provides a set of pre-configured authentications and requests to interact with Account & Application API endpoints efficiently.  
 
-REST API reference: https://developer.vonage.com/en/api/application.v2#User
+REST API reference:  
+- Account API: https://developer.vonage.com/en/api/account
+- Application API: https://developer.vonage.com/en/api/application.v2
 
 How It Works
 ======================
 ## **Using Postman Variables**  
 In this collection, items enclosed in `{{ }}` are variables (e.g., `{{application_id}}`). You can either replace these placeholders with your own values or set them as variables in Postman. For more information about Postman Collection variable, visit: https://learning.postman.com/docs/sending-requests/variables/variables/#defining-collection-variables. 
 
-## **Authentication for Managing Vonage Applications**  
-To manage Vonage Applications (e.g., creating an application, retrieving application details, or updating applications), you need to use basic authentication. This requires a Vonage API key and secret, which must be Base64 encoded. For more information, see the https://developer.vonage.com/en/getting-started/concepts/authentication#basic-authentication.
+## **Authentication for Managing Vonage Account & Applications**  
+To manage Vonage Account (e.g., create a API secret) and Applications (e.g., creating an application), you need to use basic authentication. This requires a Vonage API key and secret, which must be Base64 encoded. For more information, see the https://developer.vonage.com/en/getting-started/concepts/authentication#basic-authentication.
 
 In this Collection, requests are pre-configured with basic authentication using the Vonage API key and secret stored in the Collection variables. These credentials are automatically encoded in Base64 format.  
 <img width="600" alt="Screenshot 2024-08-31 at 1 41 30 PM" src="https://github.com/user-attachments/assets/6f01dff4-74dc-4965-ba4b-a58ff54ad883">
